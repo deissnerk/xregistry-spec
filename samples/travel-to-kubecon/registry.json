@@ -1,0 +1,127 @@
+{
+  "specversion": "0.5",
+  "id": "Messages",
+  "name": "Messages Registry",
+  "description": "",
+  "messagegroups": {
+    "com.example.conference.provider": {
+      "id": "com.example.conference.provider",
+      "format": "CloudEvents/1.0",
+      "description": "Events emitted by service providers",
+      "messages": {
+        "DiscountOffered": {
+          "id": "DiscountOffered",
+          "metadata": {
+            "attributes": {
+              "source": {
+                "type": "string"
+              },
+              "type": {
+                "value": "com.example.conference.provider.DiscountOffered"
+              },
+              "subject": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "DiscountGranted": {
+          "id": "DiscountGranted",
+          "description": "A discount has been granted to a customer",
+          "metadata": {
+            "attributes": {
+              "source": {
+                "type": "string"
+              },
+              "type": {
+                "value": "com.example.conference.provider.DiscountGranted"
+              },
+              "subject": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "com.example.conference.management": {
+        "id": "com.example.conference.management",
+        "format": "CloudEvents/1.0",
+        "description": "Conference management messages",
+        "messages": {
+          "ConferencePlanned": {
+            "id": "ConferencePlanned",
+            "description": "A new conference has been planned",
+            "metadata": {
+              "attributes": {
+                "source": {
+                  "type": "string"
+                },
+                "type": {
+                  "value": "com.example.conference.management.ConferencePlanned"
+                },
+                "subject": {
+                  "desceription": "Unique identifier for the conference",
+                  "type": "string"
+                },
+                "dataschema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "ConferenceUpdated": {
+            "id": "ConferenceUpdated",
+            "description": "A conference has been updated",
+            "metadata": {
+              "attributes": {
+                "source": {
+                  "type": "string"
+                },
+                "type": {
+                  "value": "com.example.conference.management.ConferenceUpdated"
+                },
+                "subject": {
+                  "description": "Unique identifier for the conference",
+                  "type": "string"
+                },
+                "dataschema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "ConferenceCancelled": {
+            "id": "ConferenceCancelled",
+            "description": "A conference has been cancelled",
+            "metadata": {
+              "attributes": {
+                "source": {
+                  "type": "string"
+                },
+                "type": {
+                  "value": "com.example.conference.management.ConferenceCancelled"
+                },
+                "subject": {
+                  "desceription": "Unique identifier for the conference",
+                  "type": "string"
+                },
+                "dataschema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "com.example.conference.management": {
+        "id": "com.example.conference.management",
+        "com.example.conference.New": {
+          "schema": {
+          }
+        }
+      }
+    }
+  }
+}
