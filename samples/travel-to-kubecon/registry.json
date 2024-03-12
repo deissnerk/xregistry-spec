@@ -60,10 +60,7 @@
                   "value": "com.example.conference.management.ConferencePlanned"
                 },
                 "subject": {
-                  "desceription": "Unique identifier for the conference",
-                  "type": "string"
-                },
-                "dataschema": {
+                  "description": "Unique identifier for the conference",
                   "type": "string"
                 }
               }
@@ -83,11 +80,9 @@
                 "subject": {
                   "description": "Unique identifier for the conference",
                   "type": "string"
-                },
-                "dataschema": {
-                  "type": "string"
                 }
-              }
+              },
+              "schemaurl": "/schemas/com.example.conference.management/com.example.conference"
             }
           },
           "ConferenceCancelled": {
@@ -102,11 +97,20 @@
                   "value": "com.example.conference.management.ConferenceCancelled"
                 },
                 "subject": {
-                  "desceription": "Unique identifier for the conference",
+                  "description": "Unique identifier for the conference",
                   "type": "string"
-                },
-                "dataschema": {
-                  "type": "string"
+                }
+              },
+              "schemaformat": "JSONSchema/draft-07",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "conferenceId": {
+                    "type": "string"
+                  },
+                  "reason": {
+                    "type": "string"
+                  }
                 }
               }
             }
@@ -117,8 +121,37 @@
     "schemas": {
       "com.example.conference.management": {
         "id": "com.example.conference.management",
-        "com.example.conference.New": {
+        "com.example.conference": {
+          "format": "JSONSchema",
           "schema": {
+            "type": "object",
+            "properties": {
+              "conferenceId": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "location": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "address": {
+                    "type": "string"
+                  }
+                }
+              },
+              "start": {
+                "type": "string",
+                "format": "date"
+              },
+              "end": {
+                "type": "string",
+                "format": "date"
+              }
+            }
           }
         }
       }
