@@ -1,0 +1,26 @@
+[
+  {
+    "specversion": "1.0",
+    "type": "example.conference.management.ConferencePlannedt",
+    "source": "https://management.conference.example/cncf",
+    "subject": "ExampleConferences//CNCF//kccnc-eu-24",
+    "id": "A234-1234-1234",
+    "time": "2023-10-01T12:00:00Z",
+    "datacontenttype": "application/json",
+    "data": {
+      "conferenceKey": {
+        "managedBy": "ExampleConferences",
+        "organizer": "CNCF",
+        "conferenceId": "kccnc-eu-24"
+      },
+      "name": "KubeCon + CloudNativeCon Europe 2024",
+      "start_date": "2024-03-19",
+      "end_date": "2024-03-22",
+      "venue": {
+        "name": "Paris Expo Porte de Versailles",
+        "address": "1 Place de la Porte de Versailles, 75015 Paris, France"
+      },
+      "maxAttendees": 10000
+    }
+  }
+]
