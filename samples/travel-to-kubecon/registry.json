@@ -8,12 +8,12 @@
       "id": "example.conference.provider",
       "format": "CloudEvents/1.0",
       "description": "Events emitted by service providers",
-      "origin": "https://registry.example/messagegroups/com.example.conference.provider",
+      "origin": "https://registry.conference.example/messagegroups/example.conference.provider",
       "messages": {
         "DiscountOffered": {
           "id": "DiscountOffered",
           "format": "CloudEvents/1.0",
-          "origin": "https://registry.example/messagegroups/com.example.conference.provider/messages/DiscountOffered",
+          "origin": "https://registry.conference.example/messagegroups/example.conference.provider/messages/DiscountOffered",
           "metadata": {
             "type": {
               "value": "example.conference.provider.DiscountOffered"
@@ -70,7 +70,7 @@
           "id": "DiscountGranted",
           "format": "CloudEvents/1.0",
           "description": "A discount has been granted to a customer",
-          "origin": "https://registry.example/messagegroups/com.example.conference.provider/messages/DiscountGranted",
+          "origin": "https://registry.conference.example/messagegroups/example.conference.provider/messages/DiscountGranted",
           "metadata": {
             "type": {
               "value": "example.conference.provider.DiscountGranted"
@@ -253,7 +253,7 @@
   "endpoints": {
     "example.conference.provider": {
       "id": "example.conference.provider",
-      "url": "https://provider.example.com",
+      "url": "https://provider.conference.example",
       "usage": "producer",
       "description": "The conference provider service",
       "format": "CloudEvents/1.0",
@@ -261,7 +261,7 @@
       "messages": {
         "DiscountOffered": {
           "id": "DiscountOffered",
-          "basemessageurl": "/messages/com.example.conference.provider/DiscountOffered",
+          "basemessageurl": "/messagegroups/example.conference.provider/messages/DiscountOffered",
           "description": "A discount for conference attendees has been offered by the provider",
           "binding": "HTTP",
           "message": {
@@ -271,7 +271,7 @@
         },
         "DiscountGranted": {
           "id": "DiscountGranted",
-          "basemessageurl": "/messages/com.example.conference.provider/DiscountGranted",
+          "basemessageurl": "/messagegroups/example.conference.provider/messages/DiscountGranted",
           "description": "A discount has been granted to a customer",
           "binding": "HTTP",
           "message": {
@@ -283,15 +283,19 @@
     },
     "example.conference.management": {
       "id": "example.conference.management",
+      "url": "https://provider.conference.example/subscribe",
       "binding": "HTTP",
       "usage": "subscriber",
+      "config": {
+        "protocol": "HTTP"
+      },
       "description": "The conference management service",
       "messages": {
         "ConferencePlanned": {
           "id": "ConferencePlanned",
           "format": "CloudEvents/1.0",
           "binding": "HTTP",
-          "basemessageurl": "/messages/com.example.conference.management/ConferencePlanned",
+          "basemessageurl": "/messagegroups/example.conference.management/messages/ConferencePlanned",
           "description": "A new conference has been planned",
           "message": {
           }
@@ -299,15 +303,13 @@
         "ConferenceUpdated": {
           "id": "ConferenceUpdated",
           "format": "CloudEvents/1.0",
-          "basemessageurl": "/messages/com.example.conference.management/ConferenceUpdated",
-          "description": "A conference has been updated",
-          "binding": "HTTP",
-          "message": {
-          }
+          "basemessageurl": "/messagegroups/example.conference.management/messages/ConferenceUpdated",
+          "description": "A conference has been updated"
+
         },
         "ConferenceCancelled": {
           "id": "ConferenceCancelled",
-          "basemessageurl": "/messages/com.example.conference.management/ConferenceCancelled",
+          "basemessageurl": "/messagegroups/example.conference.management/messages/ConferenceCancelled",
           "format": "CloudEvents/1.0",
           "description": "A conference has been cancelled",
           "binding": "HTTP",
