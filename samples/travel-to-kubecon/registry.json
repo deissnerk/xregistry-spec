@@ -128,7 +128,7 @@
                 }
               },
               "schemaformat": "JSONSchema/draft-07",
-              "schemaurl": "/schemas/com.example.conference.management/schema/ConferenceInformation/1"
+              "schemaurl": "/schemagroups/com.example.conference.management/schemas/ConferenceInformation/versions/1"
             },
             "ConferenceUpdated": {
               "id": "ConferenceUpdated",
@@ -145,7 +145,7 @@
                 }
               },
               "schemaformat": "JSONSchema/draft-07",
-              "schemaurl": "/schemas/com.example.conference.management/schema/ConferenceInformation/1"
+              "schemaurl": "/schemagroups/com.example.conference.management/schemas/ConferenceInformation/versions/1"
             },
             "ConferenceCancelled": {
               "id": "ConferenceCancelled",
@@ -190,55 +190,59 @@
       }
     }
   },
-  "schemas": {
+  "schemagroups": {
     "example.conference.management": {
       "id": "example.conference.management",
-      "ConferenceInformation": {
-        "id": "ConferenceInformation",
-        "format": "JSONSchema",
-        "latestversionid": "1",
-        "versions": {
-          "1": {
-            "type": "object",
-            "properties": {
-              "conferenceKey": {
-                "type": "object",
-                "properties": {
-                  "managedBy": {
-                    "type": "string"
-                  },
-                  "organizer": {
-                    "type": "string"
-                  },
-                  "conferenceId": {
-                    "type": "string"
+      "schemas": {
+        "ConferenceInformation": {
+          "id": "ConferenceInformation",
+          "format": "JSONSchema",
+          "latestversionid": "1",
+          "versions": {
+            "1": {
+              "id": "ConferenceInformation",
+              "format": "JSONSchema",
+              "type": "object",
+              "properties": {
+                "conferenceKey": {
+                  "type": "object",
+                  "properties": {
+                    "managedBy": {
+                      "type": "string"
+                    },
+                    "organizer": {
+                      "type": "string"
+                    },
+                    "conferenceId": {
+                      "type": "string"
+                    }
                   }
-                }
-              },
-              "name": {
-                "type": "string"
-              },
-              "venue": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string"
-                  },
-                  "address": {
-                    "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "venue": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "address": {
+                      "type": "string"
+                    }
                   }
+                },
+                "start": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "end": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "maxAttendees": {
+                  "type": "integer"
                 }
-              },
-              "start": {
-                "type": "string",
-                "format": "date"
-              },
-              "end": {
-                "type": "string",
-                "format": "date"
-              },
-              "maxAttendees": {
-                "type": "integer"
               }
             }
           }
