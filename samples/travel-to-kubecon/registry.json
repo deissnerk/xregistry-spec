@@ -128,7 +128,7 @@
                 }
               },
               "schemaformat": "JSONSchema/draft-07",
-              "schemaurl": "/schemagroups/com.example.conference.management/schemas/ConferenceInformation/versions/1"
+              "schemaurl": "/schemagroups/example.conference.management/schemas/ConferenceInformation/versions/1"
             },
             "ConferenceUpdated": {
               "id": "ConferenceUpdated",
@@ -145,7 +145,7 @@
                 }
               },
               "schemaformat": "JSONSchema/draft-07",
-              "schemaurl": "/schemagroups/com.example.conference.management/schemas/ConferenceInformation/versions/1"
+              "schemaurl": "/schemagroups/example.conference.management/schemas/ConferenceInformation/versions/1"
             },
             "ConferenceCancelled": {
               "id": "ConferenceCancelled",
