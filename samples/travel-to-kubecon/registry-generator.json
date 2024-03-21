@@ -1,7 +1,7 @@
 {
   "specversion": "0.5",
   "id": "Messages",
-  "name": "Messages Registry",
+  "name": "Message Registry",
   "description": "",
   "messagegroups": {
     "example.conference.provider": {
@@ -15,12 +15,14 @@
           "format": "CloudEvents/1.0",
           "origin": "https://registry.conference.example/messagegroups/example.conference.provider/messages/DiscountOffered",
           "metadata": {
-            "type": {
-              "value": "example.conference.provider.DiscountOffered"
-            },
-            "subject": {
-              "required": true,
-              "type": "string"
+            "attributes": {
+              "type": {
+                "value": "example.conference.provider.DiscountOffered"
+              },
+              "subject": {
+                "required": true,
+                "type": "string"
+              }
             }
           },
           "schemaformat": "JSONSchema/draft-07",
@@ -72,13 +74,15 @@
           "description": "A discount has been granted to a customer",
           "origin": "https://registry.conference.example/messagegroups/example.conference.provider/messages/DiscountGranted",
           "metadata": {
-            "type": {
-              "value": "example.conference.provider.DiscountGranted"
-            },
-            "subject": {
-              "description": "Unique identifier for the discount",
-              "required": true,
-              "type": "string"
+            "attributes": {
+              "type": {
+                "value": "example.conference.provider.DiscountGranted"
+              },
+              "subject": {
+                "description": "Unique identifier for the discount",
+                "required": true,
+                "type": "string"
+              }
             }
           },
           "schemaformat": "JSONSchema/draft-07",
@@ -107,9 +111,7 @@
               }
             }
           }
-        }
-      }
-    },
+        },
         "example.conference.management": {
           "id": "example.conference.management",
           "format": "CloudEvents/1.0",
@@ -120,47 +122,53 @@
               "format": "CloudEvents/1.0",
               "description": "A new conference has been planned",
               "metadata": {
-                "type": {
-                  "value": "example.conference.management.ConferencePlanned"
-                },
-                "subject": {
-                  "description": "Unique identifier for the conference",
-                  "required": true,
-                  "type": "string"
+                "attributes": {
+                  "type": {
+                    "value": "example.conference.management.ConferencePlanned"
+                  },
+                  "subject": {
+                    "description": "Unique identifier for the conference",
+                    "required": true,
+                    "type": "string"
+                  }
                 }
               },
               "schemaformat": "JSONSchema/draft-07",
-              "schemaurl": "/schemagroups/example.conference.management/schemas/ConferenceInformation/versions/1"
+              "schemaurl": "#/schemagroups/example.conference.management/schemas/ConferenceInformation/versions/1"
             },
             "ConferenceUpdated": {
               "id": "ConferenceUpdated",
               "format": "CloudEvents/1.0",
               "description": "A conference has been updated",
               "metadata": {
-                "type": {
-                  "value": "example.conference.management.ConferenceUpdated"
-                },
-                "subject": {
-                  "description": "Unique identifier for the conference",
-                  "required": true,
-                  "type": "string"
+                "attributes": {
+                  "type": {
+                    "value": "example.conference.management.ConferenceUpdated"
+                  },
+                  "subject": {
+                    "description": "Unique identifier for the conference",
+                    "required": true,
+                    "type": "string"
+                  }
                 }
               },
               "schemaformat": "JSONSchema/draft-07",
-              "schemaurl": "/schemagroups/example.conference.management/schemas/ConferenceInformation/versions/1"
+              "schemaurl": "#/schemagroups/example.conference.management/schemas/ConferenceInformation/versions/1"
             },
             "ConferenceCancelled": {
               "id": "ConferenceCancelled",
               "format": "CloudEvents/1.0",
               "description": "A conference has been cancelled",
               "metadata": {
-                "type": {
-                  "value": "example.conference.management.ConferenceCancelled"
-                },
-                "subject": {
-                  "description": "conferenceId, unique identifier for the conference",
-                  "required": true,
-                  "type": "string"
+                "attributes": {
+                  "type": {
+                    "value": "example.conference.management.ConferenceCancelled"
+                  },
+                  "subject": {
+                    "description": "conferenceId, unique identifier for the conference",
+                    "required": true,
+                    "type": "string"
+                  }
                 }
               },
               "schemaformat": "JSONSchema/draft-07",
@@ -189,8 +197,10 @@
             }
           }
         }
-      },
-    "schemagroups": {
+      }
+    }
+  },
+  "schemagroups": {
     "example.conference.management": {
       "id": "example.conference.management",
       "schemas": {
@@ -258,10 +268,11 @@
       "description": "The conference provider service",
       "format": "CloudEvents/1.0",
       "binding": "HTTP",
+      "config": {"protocol": "HTTP"},
       "messages": {
         "DiscountOffered": {
           "id": "DiscountOffered",
-          "basemessageurl": "/messagegroups/example.conference.provider/messages/DiscountOffered",
+          "baseDefinitionUrl": "#/messagegroups/example.conference.provider/messages/DiscountOffered",
           "description": "A discount for conference attendees has been offered by the provider",
           "binding": "HTTP",
           "message": {
@@ -271,7 +282,7 @@
         },
         "DiscountGranted": {
           "id": "DiscountGranted",
-          "basemessageurl": "/messagegroups/example.conference.provider/messages/DiscountGranted",
+          "baseDefinitionUrl": "#/messagegroups/example.conference.provider/messages/DiscountGranted",
           "description": "A discount has been granted to a customer",
           "binding": "HTTP",
           "message": {
@@ -295,7 +306,7 @@
           "id": "ConferencePlanned",
           "format": "CloudEvents/1.0",
           "binding": "HTTP",
-          "basemessageurl": "/messagegroups/example.conference.management/messages/ConferencePlanned",
+          "baseDefinitionUrl": "#/messagegroups/example.conference.management/messages/ConferencePlanned",
           "description": "A new conference has been planned",
           "message": {
           }
@@ -303,18 +314,18 @@
         "ConferenceUpdated": {
           "id": "ConferenceUpdated",
           "format": "CloudEvents/1.0",
-          "basemessageurl": "/messagegroups/example.conference.management/messages/ConferenceUpdated",
+          "baseDefinitionUrl": "#/messagegroups/example.conference.management/messages/ConferenceUpdated",
           "description": "A conference has been updated"
-
         },
         "ConferenceCancelled": {
           "id": "ConferenceCancelled",
-          "basemessageurl": "/messagegroups/example.conference.management/messages/ConferenceCancelled",
+          "baseDefinitionUrl": "#/messagegroups/example.conference.management/messages/ConferenceCancelled",
           "format": "CloudEvents/1.0",
           "description": "A conference has been cancelled",
           "binding": "HTTP",
           "message": {
-          }
+          },
+          "metadata": {}
         }
       }
     }

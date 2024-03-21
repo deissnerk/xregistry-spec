@@ -1,0 +1,133 @@
+{
+  "specversion": "0.5-wip",
+  "id": "Messages",
+  "name": "Message Registry",
+  "description": "",
+  "messagegroups": {
+    "example.conference.provider": {
+      "id": "example.conference.provider",
+      "format": "CloudEvents/1.0",
+      "description": "Events emitted by service providers",
+      "origin": "https://registry.conference.example/messagegroups/example.conference.provider",
+      "messages": {
+        "DiscountOffered": {
+          "id": "DiscountOffered",
+          "format": "CloudEvents/1.0",
+          "origin": "https://registry.conference.example/messagegroups/example.conference.provider/messages/DiscountOffered",
+          "metadata": {
+            "attributes": {
+              "type": {
+                "value": "example.conference.provider.DiscountOffered"
+              },
+              "subject": {
+                "required": true,
+                "type": "string"
+              }
+            }
+          },
+          "schemaformat": "JSONSchema/draft-07",
+          "schemaobject": {
+            "type": "object",
+            "properties": {
+              "conferenceKey": {
+                "type": "object",
+                "properties": {
+                  "managedBy": {
+                    "type": "string"
+                  },
+                  "organizer": {
+                    "type": "string"
+                  },
+                  "conferenceId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "discount": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "price": {
+                    "type": "object",
+                    "properties": {
+                      "currency": {
+                        "type": "string"
+                      },
+                      "amount": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "totalOffered": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "DiscountGranted": {
+          "id": "DiscountGranted",
+          "format": "CloudEvents/1.0",
+          "description": "A discount has been granted to a customer",
+          "origin": "https://registry.conference.example/messagegroups/example.conference.provider/messages/DiscountGranted",
+          "metadata": {
+            "attributes": {
+              "type": {
+                "value": "example.conference.provider.DiscountGranted"
+              },
+              "subject": {
+                "description": "Unique identifier for the discount",
+                "required": true,
+                "type": "string"
+              }
+            }
+          },
+          "schemaformat": "JSONSchema/draft-07",
+          "schemaobject": {
+            "type": "object",
+            "properties": {
+              "conferenceKey": {
+                "type": "object",
+                "properties": {
+                  "managedBy": {
+                    "type": "string"
+                  },
+                  "organizer": {
+                    "type": "string"
+                  },
+                  "conferenceId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "discountId": {
+                "type": "string"
+              },
+              "totalGranted": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "endpoints": {
+    "example.conference.provider": {
+      "id": "example.conference.provider",
+      "url": "https://provider.conference.example",
+      "usage": "producer",
+      "description": "The conference provider service",
+      "format": "CloudEvents/1.0",
+      "config": {
+        "protocol": "HTTP"
+      },
+      "messagegroups": [
+        "#/messagegroups/example.conference.provider"
+      ]
+    }
+  }
+}
