@@ -1,5 +1,5 @@
 {
-  "specversion": "0.5",
+  "specversion": "0.5wip",
   "id": "Messages",
   "name": "Messages Registry",
   "description": "",
@@ -110,87 +110,84 @@
         }
       }
     },
-        "example.conference.management": {
-          "id": "example.conference.management",
+    "example.conference.management": {
+      "id": "example.conference.management",
+      "format": "CloudEvents/1.0",
+      "description": "Conference management messages",
+      "messages": {
+        "ConferencePlanned": {
+          "id": "ConferencePlanned",
           "format": "CloudEvents/1.0",
-          "description": "Conference management messages",
-          "messages": {
-            "ConferencePlanned": {
-              "id": "ConferencePlanned",
-              "format": "CloudEvents/1.0",
-              "description": "A new conference has been planned",
-              "metadata": {
-                "type": {
-                  "value": "example.conference.management.ConferencePlanned"
-                },
-                "subject": {
-                  "description": "Unique identifier for the conference",
-                  "required": true,
-                  "type": "string"
-                }
-              },
-              "schemaformat": "JSONSchema/draft-07",
-              "schemaurl": "/schemagroups/example.conference.management/schemas/ConferenceInformation/versions/1"
+          "description": "A new conference has been planned",
+          "metadata": {
+            "type": {
+              "value": "example.conference.management.ConferencePlanned"
             },
-            "ConferenceUpdated": {
-              "id": "ConferenceUpdated",
-              "format": "CloudEvents/1.0",
-              "description": "A conference has been updated",
-              "metadata": {
-                "type": {
-                  "value": "example.conference.management.ConferenceUpdated"
-                },
-                "subject": {
-                  "description": "Unique identifier for the conference",
-                  "required": true,
-                  "type": "string"
-                }
-              },
-              "schemaformat": "JSONSchema/draft-07",
-              "schemaurl": "/schemagroups/example.conference.management/schemas/ConferenceInformation/versions/1"
+            "subject": {
+              "description": "Unique identifier for the conference",
+              "required": true
+            }
+          },
+          "schemaformat": "JSONSchema/draft-07",
+          "schemaurl": "/schemagroups/example.conference.management/schemas/ConferenceInformation/versions/1"
+        },
+        "ConferenceUpdated": {
+          "id": "ConferenceUpdated",
+          "format": "CloudEvents/1.0",
+          "description": "A conference has been updated",
+          "metadata": {
+            "type": {
+              "value": "example.conference.management.ConferenceUpdated"
             },
-            "ConferenceCancelled": {
-              "id": "ConferenceCancelled",
-              "format": "CloudEvents/1.0",
-              "description": "A conference has been cancelled",
-              "metadata": {
-                "type": {
-                  "value": "example.conference.management.ConferenceCancelled"
-                },
-                "subject": {
-                  "description": "conferenceId, unique identifier for the conference",
-                  "required": true,
-                  "type": "string"
-                }
-              },
-              "schemaformat": "JSONSchema/draft-07",
-              "schema": {
+            "subject": {
+              "description": "Unique identifier for the conference",
+              "required": true
+            }
+          },
+          "schemaformat": "JSONSchema/draft-07",
+          "schemaurl": "/schemagroups/example.conference.management/schemas/ConferenceInformation/versions/1"
+        },
+        "ConferenceCancelled": {
+          "id": "ConferenceCancelled",
+          "format": "CloudEvents/1.0",
+          "description": "A conference has been cancelled",
+          "metadata": {
+            "type": {
+              "value": "example.conference.management.ConferenceCancelled"
+            },
+            "subject": {
+              "description": "conferenceId, unique identifier for the conference",
+              "required": true
+            }
+          },
+          "schemaformat": "JSONSchema/draft-07",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "conferenceKey": {
                 "type": "object",
                 "properties": {
-                  "conferenceKey": {
-                    "type": "object",
-                    "properties": {
-                      "managedBy": {
-                        "type": "string"
-                      },
-                      "organizer": {
-                        "type": "string"
-                      },
-                      "conferenceId": {
-                        "type": "string"
-                      }
-                    }
+                  "managedBy": {
+                    "type": "string"
                   },
-                  "reason": {
+                  "organizer": {
+                    "type": "string"
+                  },
+                  "conferenceId": {
                     "type": "string"
                   }
                 }
+              },
+              "reason": {
+                "type": "string"
               }
             }
           }
         }
-      },
-    "schemagroups": {
+      }
+    }
+  },
+  "schemagroups": {
     "example.conference.management": {
       "id": "example.conference.management",
       "schemas": {
@@ -283,7 +280,7 @@
     },
     "example.conference.management": {
       "id": "example.conference.management",
-      "url": "https://provider.conference.example/subscribe",
+      "url": "https://management.conference.example/subscribe",
       "binding": "HTTP",
       "usage": "subscriber",
       "config": {
@@ -305,7 +302,6 @@
           "format": "CloudEvents/1.0",
           "basemessageurl": "/messagegroups/example.conference.management/messages/ConferenceUpdated",
           "description": "A conference has been updated"
-
         },
         "ConferenceCancelled": {
           "id": "ConferenceCancelled",

@@ -25,95 +25,123 @@
               }
             }
           },
-          "schemaformat": "JSONSchema/draft-07",
-          "schemaobject": {
-            "type": "object",
-            "properties": {
-              "conferenceKey": {
-                "type": "object",
-                "properties": {
-                  "managedBy": {
-                    "type": "string"
-                  },
-                  "organizer": {
-                    "type": "string"
-                  },
-                  "conferenceId": {
-                    "type": "string"
-                  }
-                }
-              },
-              "discount": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "string"
-                  },
-                  "price": {
-                    "type": "object",
-                    "properties": {
-                      "currency": {
-                        "type": "string"
-                      },
-                      "amount": {
-                        "type": "number"
-                      }
-                    }
-                  },
-                  "totalOffered": {
-                    "type": "integer"
-                  }
-                }
-              }
+          "schemaformat": "JsonSchema/draft-07",
+          "schemaurl": "#/schemagroups/example.conference.provider/schemas/DiscountOffered"
+        },
+      "DiscountGranted": {
+        "id": "DiscountGranted",
+        "format": "CloudEvents/1.0",
+        "description": "A discount has been granted to a customer",
+        "origin": "https://registry.conference.example/messagegroups/example.conference.provider/messages/DiscountGranted",
+        "metadata": {
+          "attributes": {
+            "type": {
+              "value": "example.conference.provider.DiscountGranted"
+            },
+            "subject": {
+              "description": "Unique identifier for the discount",
+              "required": true,
+              "type": "string"
             }
           }
         },
-        "DiscountGranted": {
-          "id": "DiscountGranted",
-          "format": "CloudEvents/1.0",
-          "description": "A discount has been granted to a customer",
-          "origin": "https://registry.conference.example/messagegroups/example.conference.provider/messages/DiscountGranted",
-          "metadata": {
-            "attributes": {
-              "type": {
-                "value": "example.conference.provider.DiscountGranted"
-              },
-              "subject": {
-                "description": "Unique identifier for the discount",
-                "required": true,
-                "type": "string"
-              }
-            }
-          },
-          "schemaformat": "JSONSchema/draft-07",
-          "schemaobject": {
-            "type": "object",
-            "properties": {
-              "conferenceKey": {
+        "schemaformat": "JsonSchema/draft-07",
+        "schemaurl": "#/schemagroups/example.conference.provider/schemas/DiscountGranted"
+      }
+    }
+  }},
+  "schemagroups": {
+    "example.conference.provider": {
+      "id": "example.conference.provider",
+      "schemas": {
+        "DiscountOffered": {
+          "id": "DiscountOffered",
+          "format": "JsonSchema/draft-07",
+          "versions": {
+            "1": {
+              "id": "1",
+              "format": "JsonSchema/draft-07",
+              "schemaobject": {
                 "type": "object",
                 "properties": {
-                  "managedBy": {
-                    "type": "string"
+                  "conferenceKey": {
+                    "type": "object",
+                    "properties": {
+                      "managedBy": {
+                        "type": "string"
+                      },
+                      "organizer": {
+                        "type": "string"
+                      },
+                      "conferenceId": {
+                        "type": "string"
+                      }
+                    }
                   },
-                  "organizer": {
-                    "type": "string"
-                  },
-                  "conferenceId": {
-                    "type": "string"
+                  "discount": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "price": {
+                        "type": "object",
+                        "properties": {
+                          "currency": {
+                            "type": "string"
+                          },
+                          "amount": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      "totalOffered": {
+                        "type": "integer"
+                      }
+                    }
                   }
                 }
-              },
-              "discountId": {
-                "type": "string"
-              },
-              "totalGranted": {
-                "type": "integer"
+              }
+            }
+          }},
+          "DiscountGranted": {
+            "id": "DiscountGranted",
+            "format": "JsonSchema/draft-07",
+            "versions": {
+              "1": {
+                "id": "1",
+                "format": "JsonSchema/draft-07",
+                "schemaobject": {
+                  "type": "object",
+                  "properties": {
+                    "conferenceKey": {
+                      "type": "object",
+                      "properties": {
+                        "managedBy": {
+                          "type": "string"
+                        },
+                        "organizer": {
+                          "type": "string"
+                        },
+                        "conferenceId": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "discountId": {
+                      "type": "string"
+                    },
+                    "totalGranted": {
+                      "type": "integer"
+                    }
+                  }
+                }
               }
             }
           }
         }
       }
-    }
+
   },
   "endpoints": {
     "example.conference.provider": {
@@ -123,7 +151,19 @@
       "description": "The conference provider service",
       "format": "CloudEvents/1.0",
       "config": {
-        "protocol": "HTTP"
+        "protocol": "HTTP",
+        "endpoints": [
+          "https://provider.conference.example"
+        ],
+        "options": {
+          "method": "post",
+          "headers": [
+            {
+              "name": "Authorization",
+              "value": "Bearer {token}"
+            }
+          ]
+        }
       },
       "messagegroups": [
         "#/messagegroups/example.conference.provider"
