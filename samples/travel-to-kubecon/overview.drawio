@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2024-03-09T10:26:03.756Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/23.1.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="Cj0ijel6_nGX7LowTAsm" version="23.1.5" type="device">
+<mxfile host="drawio-plugin" modified="2024-05-17T16:50:41.472Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="3l46EtUPfdz3Er06xLss" version="22.1.22" type="embed">
   <diagram id="De0BZFYlNpFFtrPDqust" name="Channels">
-    <mxGraphModel dx="1254" dy="816" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="797" dy="914" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" style="" parent="0" />
@@ -149,7 +149,7 @@
         <mxCell id="OAryraXYp-LvgY6b9OL1-10" value="" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="444.2857142857143" y="250" width="185.71428571428572" height="226.03106125970663" as="geometry" />
         </mxCell>
-        <mxCell id="WocyqKa9Z0Sg-phrxOq2-5" value="Conference Management&lt;br&gt;&amp;nbsp;Provider" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="WocyqKa9Z0Sg-phrxOq2-5" value="Conference Management&lt;br&gt;Service" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="430" y="263.9689387402933" width="185.71428571428572" height="226.03106125970663" as="geometry" />
         </mxCell>
         <mxCell id="HPvP6GIJXwQTMfWnTBbl-9" value="" style="group" parent="1" vertex="1" connectable="0">

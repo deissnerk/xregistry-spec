@@ -194,51 +194,52 @@
         "ConferenceInformation": {
           "id": "ConferenceInformation",
           "format": "JSONSchema",
-          "latestversionid": "1",
           "versions": {
             "1": {
-              "id": "ConferenceInformation",
+              "id": "1",
               "format": "JSONSchema",
-              "type": "object",
-              "properties": {
-                "conferenceKey": {
-                  "type": "object",
-                  "properties": {
-                    "managedBy": {
-                      "type": "string"
-                    },
-                    "organizer": {
-                      "type": "string"
-                    },
-                    "conferenceId": {
-                      "type": "string"
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "conferenceKey": {
+                    "type": "object",
+                    "properties": {
+                      "managedBy": {
+                        "type": "string"
+                      },
+                      "organizer": {
+                        "type": "string"
+                      },
+                      "conferenceId": {
+                        "type": "string"
+                      }
                     }
-                  }
-                },
-                "name": {
-                  "type": "string"
-                },
-                "venue": {
-                  "type": "object",
-                  "properties": {
-                    "name": {
-                      "type": "string"
-                    },
-                    "address": {
-                      "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "venue": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "address": {
+                        "type": "string"
+                      }
                     }
+                  },
+                  "start": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "end": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "maxAttendees": {
+                    "type": "integer"
                   }
-                },
-                "start": {
-                  "type": "string",
-                  "format": "date"
-                },
-                "end": {
-                  "type": "string",
-                  "format": "date"
-                },
-                "maxAttendees": {
-                  "type": "integer"
                 }
               }
             }
@@ -258,7 +259,7 @@
       "messages": {
         "DiscountOffered": {
           "id": "DiscountOffered",
-          "basemessageurl": "/messagegroups/example.conference.provider/messages/DiscountOffered",
+          "basemessageurl": "#/messagegroups/example.conference.provider/messages/DiscountOffered",
           "description": "A discount for conference attendees has been offered by the provider",
           "binding": "HTTP",
           "message": {
@@ -268,7 +269,7 @@
         },
         "DiscountGranted": {
           "id": "DiscountGranted",
-          "basemessageurl": "/messagegroups/example.conference.provider/messages/DiscountGranted",
+          "basemessageurl": "#/messagegroups/example.conference.provider/messages/DiscountGranted",
           "description": "A discount has been granted to a customer",
           "binding": "HTTP",
           "message": {
